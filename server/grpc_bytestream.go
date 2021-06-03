@@ -304,6 +304,10 @@ func (s *grpcServer) parseWriteResource(r string) (string, int64, casblob.Compre
 			return "", 0, casblob.Identity, err
 		}
 
+		if size > s.maxBlobSize {
+			return "", 0, casblob.Zstandard,
+				status.Errorf(codes.InvalidArgument, "Write request size %d exceeds configured maximum object size %d", size, s.maxBlobSize)
+		}
 		return hash, size, casblob.Identity, nil
 	}
 

@@ -118,7 +118,7 @@ container_push(
     format = "Docker",
     image = ":bazel-remote-image",
     registry = "index.docker.io",
-    repository = "buchgr/bazel-remote-cache",
-    tag = "latest",
+    repository = "aspectdev/bazel-remote-cache",
+    tag = "pr443",
     visibility = ["//visibility:public"],
 )
